@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 export default function ProductDetails() {
     const [product, setProduct] = useState(null);
@@ -28,16 +29,21 @@ export default function ProductDetails() {
         <div className="container mt-4">
             <h2>Product Details (ID: {id})</h2>
             {!product ? (
-                <p>Loading...</p>
+                <p> </p>
             ) : (
                 <div>
-                    <h5>{product.name}</h5>
-                    <p>Prix : <strong>{product.price} DH</strong></p>
-                    
-                    <button className="btn btn-danger" onClick={handleDelete}>
-                        Supprimer
-                    </button>
-                </div>
+  <h5>{product.name}</h5>
+  <p>Prix : <strong>{product.price} DH</strong></p>
+
+  <button className="btn btn-danger" onClick={handleDelete}>
+    Supprimer
+  </button>
+
+  <NavLink to={`/edit/${id}`} className="btn btn-warning ms-2">
+    Modifier
+  </NavLink>
+</div>
+
             )}
         </div>
     );
